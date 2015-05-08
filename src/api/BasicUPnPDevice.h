@@ -64,6 +64,7 @@
     int smallIconWidth;
     int smallIconDepth;
     NSString *smallIconURL;
+    NSString *rawXML;
 }
 
 
@@ -98,5 +99,11 @@
 @property(readwrite) int smallIconWidth;
 @property(readwrite) int smallIconDepth;
 @property(readwrite, retain) NSString *smallIconURL;
+
+/**
+ *  Added to expose the raw XML of the discovery.
+ * Jackrabbit 05/08/2015
+ */
+@property (nonatomic, retain) NSString *rawXML;
 
 @end

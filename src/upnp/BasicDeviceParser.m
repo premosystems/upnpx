@@ -178,12 +178,61 @@
 /**
  * XML
  */
+
+/**
+ *  Added to expost the raw XML of the discovery.
+ *
+ */
+-(int)parseFromData:(NSData*)data{
+    @autoreleasepool {
+        if (data != nil) {
+            NSString *xml = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            device.rawXML = xml;
+            NSError *error = NULL;
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^\\s*$\\r?\\n" options:NSRegularExpressionAnchorsMatchLines error:&error];
+            xml = [regex stringByReplacingMatchesInString:xml options:0 range:NSMakeRange(0, [xml length]) withTemplate:@""];
+            data = [xml dataUsingEncoding:NSUTF8StringEncoding];
+        }
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+        int ret = [self startParser:parser];
+        [parser release];
+        return ret;
+    }
+}
+
+/**
+ *  Added to expose the raw XML of the discovery.
+ *
+ */
+-(int)parseFromURL:(NSURL*)url{
+    @autoreleasepool {
+        //Workaround for memory leak
+        //http://blog.filipekberg.se/2010/11/30/nsxmlparser-has-memory-leaks-in-ios-4/
+        [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+        [[NSURLCache sharedURLCache] setDiskCapacity:0];
+        
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if (data != nil) {
+            NSString *xml = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            device.rawXML = xml;
+            NSError *error = NULL;
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^\\s*$\\r?\\n" options:NSRegularExpressionAnchorsMatchLines error:&error];
+            xml = [regex stringByReplacingMatchesInString:xml options:0 range:NSMakeRange(0, [xml length]) withTemplate:@""];
+            data = [xml dataUsingEncoding:NSUTF8StringEncoding];
+        }
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+        int ret = [self startParser:parser];
+        [parser release];
+        return ret;
+    }
+}
+
 -(int)parse{
     int ret=0;
 
     NSURL *descurl = [NSURL URLWithString:device.xmlLocation];
 
-    ret = [super parseFromURL:descurl];
+    ret = [self parseFromURL:descurl];
 
 
     //Base URL
