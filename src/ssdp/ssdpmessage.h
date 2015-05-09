@@ -53,7 +53,8 @@ public:
     //0 : processed
     //1 : not for me, search for another to process
     //<0 : message was for me but there is an error
-    virtual int Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders)=0;
+    //virtual int Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders)=0;
+    virtual int Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders,u8 *buf)=0;
     //ReInit all members
     virtual void ReInit()=0;
     virtual SSDPDB* GetDB();

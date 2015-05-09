@@ -48,7 +48,7 @@ SSDPNotifyBye::SSDPNotifyBye(){
 void SSDPNotifyBye::ReInit(){
 }
 
-int SSDPNotifyBye::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders){
+int SSDPNotifyBye::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders, u8 *buf){
     int ret = 0;
     u8* usn;
     int usnlen;

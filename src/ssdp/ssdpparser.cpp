@@ -176,7 +176,8 @@ int SSDPParser::Parse(struct sockaddr* sender, u8* buf, u32 len){
 
         if(msg->GetType() == mType){
             if(msg->CanProcess(mHeaders) == 1){
-                ret = msg->Process(sender, mHeaders);
+                // Added by Jackrabbit 5/8/2015 *buf
+                ret = msg->Process(sender, mHeaders,buf);
                 if(ret != 1){ //0=ok,-1=error,1=not for me, continue...
                     break;
                 }

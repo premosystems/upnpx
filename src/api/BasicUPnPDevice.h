@@ -65,6 +65,7 @@
     int smallIconDepth;
     NSString *smallIconURL;
     NSString *rawXML;
+    NSString *rawResponse;
 }
 
 
@@ -105,5 +106,11 @@
  * Jackrabbit 05/08/2015
  */
 @property (nonatomic, retain) NSString *rawXML;
+
+/**
+ *  Added to expose the raw UPNP response of the discovery.
+ * Jackrabbit 05/08/2015
+ */
+@property (nonatomic, retain) NSString *rawResponse;
 
 @end

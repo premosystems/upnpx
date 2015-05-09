@@ -49,8 +49,8 @@ SSDPSearchResp::SSDPSearchResp(){
 void SSDPSearchResp::ReInit(){
 }
 
-
-int SSDPSearchResp::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders){
+// Added by Jackrabbit 5/8/2015 *buf
+int SSDPSearchResp::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders, u8* buf){
     u8* usn;
     int usnlen;
     int ret;
@@ -93,6 +93,10 @@ int SSDPSearchResp::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADE
         memcpy(&(device->port), sender->sa_data, 2);
         device->port = ntohs(device->port);
 
+        //raw response
+        // Added by Jackrabbit 5/8/2015
+        device->rawResponse = buf;
+        
         //uuid
         device->uuid.assign((const char*)uuid.uuid, uuid.uuidlen);
         device->isroot = uuid.isrootdevice;

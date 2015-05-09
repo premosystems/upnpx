@@ -224,6 +224,8 @@
         [upnpdevice release];
         //Signal the description load thread 
     }
+    
+    upnpdevice.rawResponse = ssdpdevice.rawResponse;
 
     [self unlock];
 

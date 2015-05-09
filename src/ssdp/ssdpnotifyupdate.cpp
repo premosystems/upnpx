@@ -50,7 +50,7 @@ SSDPNotifyUpdate::SSDPNotifyUpdate(){
 void SSDPNotifyUpdate::ReInit(){
 }
 
-int SSDPNotifyUpdate::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders){
+int SSDPNotifyUpdate::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders, u8 *buf){
     //The only reason seem to be to update the "BOOTID.UPNP.ORG" field which my devices don't send anyway
     return 0;
 }

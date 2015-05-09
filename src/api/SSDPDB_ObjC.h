@@ -92,7 +92,8 @@
     NSString *version;
     NSString *host;
     NSString *location;
-
+    NSString *rawResponse;
+    
     unsigned int ip;
     unsigned short port;
 }
@@ -111,5 +112,6 @@
 @property(readonly) NSString *location;
 @property(readonly) unsigned int ip;
 @property(readonly) unsigned short port;
+@property(readonly) NSString *rawResponse;
 
 @end

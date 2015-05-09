@@ -51,7 +51,7 @@ SSDPNotifyAlive::SSDPNotifyAlive(){
 void SSDPNotifyAlive::ReInit(){
 }
 
-int SSDPNotifyAlive::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders){
+int SSDPNotifyAlive::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders, u8 *buf){
     u8* usn;
     int usnlen;
     int ret;

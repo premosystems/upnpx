@@ -43,7 +43,7 @@ SSDPSearchReq::SSDPSearchReq(){
 void SSDPSearchReq::ReInit(){
 }
 
-int SSDPSearchReq::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders){
+int SSDPSearchReq::Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders, u8 *buf){
     //At the moment we don't advertise ourselves
     return 0;
 }

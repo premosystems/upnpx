@@ -41,7 +41,7 @@ class SSDPNotifyUpdate: public SSDPNotify{
 public:
     SSDPNotifyUpdate();
     //Process the message
-    int Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders);
+    int Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders, u8 *buf);
     //ReInit
     void ReInit();
 };

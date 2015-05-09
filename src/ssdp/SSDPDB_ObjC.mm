@@ -227,6 +227,7 @@ private:
 @synthesize location;
 @synthesize ip;
 @synthesize port;
+@synthesize rawResponse;
 
 
 -(instancetype)initWithCPPDevice:(void*)cppDevice{
@@ -245,6 +246,11 @@ private:
         version        = [[NSString alloc] initWithCString:dev->version.c_str() encoding:NSASCIIStringEncoding];
         host        = [[NSString alloc] initWithCString:dev->host.c_str() encoding:NSASCIIStringEncoding];
         location    = [[NSString alloc] initWithCString:dev->location.c_str() encoding:NSASCIIStringEncoding];
+        
+        if (dev->rawResponse) {
+            rawResponse    = [[NSString alloc] initWithUTF8String:(char *)dev->rawResponse];
+        }
+        
         ip            = dev->ip;
         port        = dev->port;
     }
@@ -260,6 +266,7 @@ private:
     [version release];
     [host release];
     [location release];
+    [rawResponse release];
 
     [super dealloc];
 }

@@ -69,6 +69,8 @@
 @synthesize modelURL;
 @synthesize modelURLString;
 @synthesize serialNumber;
+@synthesize rawXML;
+@synthesize rawResponse;
 
 
 -(instancetype)init{

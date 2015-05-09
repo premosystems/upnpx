@@ -62,6 +62,8 @@ public:
 
     u32 cachecontrol;
     time_t lastupdate;
+    
+    u8 *rawResponse;
 
 
 private:

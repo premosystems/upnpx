@@ -42,7 +42,8 @@ class SSDPHTTP: public SSDPMessage{
     //What type of message can we handle
     SSDP_TYPE GetType();
     //Process the message
-    virtual int Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders)=0;
+    // Added by Jackrabbit 5/8/2015 *buf
+    virtual int Process(struct sockaddr* sender, std::vector<SSDP_HTTP_HEADER*> msgheaders,u8 *buf)=0;
     //ReInit
     void ReInit()=0;
 };
