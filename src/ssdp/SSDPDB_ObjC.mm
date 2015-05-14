@@ -247,7 +247,7 @@ private:
         host        = [[NSString alloc] initWithCString:dev->host.c_str() encoding:NSASCIIStringEncoding];
         location    = [[NSString alloc] initWithCString:dev->location.c_str() encoding:NSASCIIStringEncoding];
         
-        if (dev->rawResponse) {
+        if (*dev->rawResponse != NULL && *dev->rawResponse != '\0' && *dev->rawResponse != ' ') {
             rawResponse    = [[NSString alloc] initWithUTF8String:(char *)dev->rawResponse];
         }
         
